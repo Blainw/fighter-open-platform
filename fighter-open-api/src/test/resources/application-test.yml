@@ -1,0 +1,47 @@
+fighter:
+  api-title: 测试
+  api-version: v1
+  enable-api-doc: true
+  app-key: wip_fighter_framework
+  app-secret: wip_fighter_framework_secret
+
+spring:
+  session:
+    store-type: redis
+    redis:
+      flush-mode: on_save
+      namespace: fighter:session
+  redis:
+    host: 192.168.56.110
+    password:
+    port: 6379
+  datasource:
+    #属性配置说明: https://github.com/alibaba/druid/wiki/DruidDataSource%E9%85%8D%E7%BD%AE%E5%B1%9E%E6%80%A7%E5%88%97%E8%A1%A8
+    druid:
+      url: jdbc:mysql://192.168.56.110:3306/fighter?rewriteBatchedStatements=true
+      username: fighter
+      password: fighter
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      filter: stat,wall,slf4j
+      initial-size: 1
+      max-active: 5000
+      min-idle: 1
+      max-wait: 60000
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      pool-prepared-statements: false
+      async-init: true  #异步处理, 连接无法创建不影响应用的启动
+  #      web-stat-filter:
+  #        enabled: true
+  #        url-pattern: /*
+  #        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+  #      stat-view-servlet:
+  #        enabled: true
+  #        url-pattern: /druid/*
+  #        reset-enable: true
+  #        login-username: phenom
+  #        login-password: phenom
+  #      use-global-data-source-stat: true

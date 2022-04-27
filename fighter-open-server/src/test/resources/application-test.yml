@@ -1,0 +1,162 @@
+fighter:
+  app-key: wip_fighter_framework
+  app-secret: wip_fighter_framework_secret
+  api-doc:
+    dockets:
+      - title: 资源访问控制
+        version: v1
+        base-package: ai.wiseloong.fighter.permission
+        bean-name: docket1
+      - title: 系统管理
+        version: v1
+        base-package: ai.wiseloong.fighter.system
+        bean-name: docket2
+      - title: 认证集成
+        version: v1
+        base-package: ai.wiseloong.fighter.integrate.uaap.oauth2
+        bean-name: docket3
+      - title: 租户管理
+        version: v1
+        base-package: ai.wiseloong.fighter.tenant
+        bean-name: docket4
+  integrate:
+    uaap:
+      oauth2:
+        client-id: localcastest
+        client-secret: localcastest
+        authorize-url-prefix: http://auth.wiseloong.com/cas/oauth2.0/authorize
+        access-token-url-prefix: http://auth.wiseloong.com/cas/oauth2.0/accessToken
+        profile-url-prefix: http://auth.wiseloong.com/cas/oauth2.0/profile
+      cas:
+        client-host-url: http://uaap.213zb.com:8080
+        server-url-prefix: http://uaap.213zb.com/cas
+        front-url: http://uaap.213zb.com:8081/mng/#/casLogin
+        ding-talk:
+          app-id: dingoa49ksjryjmos9jbhc
+  system-manage:
+    retrieve-password:
+      email:
+        name: 邮箱验证码找回
+        captcha-handler:
+          timeout-in-second: 600
+          type-key: EmailCaptchaHandler
+          title: 密码找回
+    login-audit:
+      enable: true
+      store-type: database
+    self-modify:
+      email:
+        attribute-name: 邮箱
+        allow-action: set_new_value
+        check-old-value: captcha
+        check-new-value: captcha
+        captcha-handler:
+          type-key: EmailCaptchaHandler
+      nickName:
+        attribute-name: 昵称
+        allow-action: set_new_value
+        check-old-value: no_check
+        check-new-value: no_check
+      userPassword:
+        attribute-name: 密码
+        allow-action: set_new_value
+        check-old-value: complete
+      wxgzptOpenId:
+        attribute-name: 微信公众平台
+        have-value-tips: 已绑定
+        no-value-tips: 未绑定
+        no-value-action-name:
+        have-value-action-name: 解绑
+        allow-action: set_empty
+        check-old-value: no_check
+        check-new-value: no_check
+    account-modify-audit:
+      enable: true
+      storage-time-in-month: 3
+  permission:
+    client:
+      init-rest-api-resource: false
+  tenant:
+    enable: true
+    ignore-table-name:
+      - V_PERMISSION_RULE
+      - T_SYS_ACCOUNT
+      - T_SYS_TENANT
+      - T_SYS_ACCOUNT_MODIFY_LOG
+      - ACT_*
+      - FORM_*
+    component-active-table-name:
+      work-flow:
+        - ACT_*
+        - FORM_*
+spring:
+  session:
+    store-type: redis
+    redis:
+      flush-mode: on_save
+      namespace: fighter:session
+  #    timeout: 10
+  redis:
+    host: 192.168.56.110
+    #    password:
+    port: 6379
+  datasource:
+    #属性配置说明: https://github.com/alibaba/druid/wiki/DruidDataSource%E9%85%8D%E7%BD%AE%E5%B1%9E%E6%80%A7%E5%88%97%E8%A1%A8
+    druid:
+      url: jdbc:mysql://192.168.56.110:3306/fighter?rewriteBatchedStatements=true
+      username: fighter
+      password: fighter
+      #      url: jdbc:mysql://192.168.21.25:3306/lightportal?rewriteBatchedStatements=true
+      #      username: root
+      #      password: testx123456
+      #      url: jdbc:mysql://192.168.56.110:3306/temp_test?rewriteBatchedStatements=true
+      #      username: root
+      #      password: phenom
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      #      url: jdbc:oracle:thin:@192.168.56.101:1521:orcl
+      #      username: fighter
+      #      password: fighter
+      #      driver-class-name: oracle.jdbc.driver.OracleDriver
+      filter: stat,wall,slf4j
+      initial-size: 1
+      max-active: 5000
+      min-idle: 1
+      max-wait: 60000
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      pool-prepared-statements: false
+      async-init: true  #异步处理, 连接无法创建不影响应用的启动
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        reset-enable: true
+        login-username: phenom
+        login-password: phenom
+      use-global-data-source-stat: true
+  mail:
+    host: smtp.163.com
+    username: phenom330@163.com
+    password: 189521zhigao
+    port: 465
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true
+  elasticsearch:
+    rest:
+      uris: http://192.168.56.110:9200
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    cache-enabled: true
+logging:
+  config: classpath:log4j2-${spring.profiles.active}.xml

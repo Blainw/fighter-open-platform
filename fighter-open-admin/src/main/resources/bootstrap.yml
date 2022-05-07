@@ -1,0 +1,32 @@
+logging:
+  level:
+    io.swagger.models.parameters.AbstractSerializableParameter: error
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${spring.cloud.nacos.config.server-addr}
+        group: REST_GROUP
+        ip: 121.228.41.148
+        enabled: false
+      config:
+        server-addr: 121.228.41.148:8848
+        name: ${spring.application.name}
+        file-extension: yaml
+        shared-configs:
+          - data-id: fighter-shared-config.yml
+  application:
+    name: fighter-open-admin
+  profiles:
+    active: dev
+server:
+  port: 8081
+fighter:
+  microservice:
+    core:
+      init-login-info-group: loginNamePassword
+  logging:
+    logstash:
+      host: 121.228.41.148
+      port: 4560
+    file-path: /logs

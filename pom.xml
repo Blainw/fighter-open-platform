@@ -8,16 +8,20 @@
         <version>1.10.1-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <const-manage.version>1.2.5.RELEASE</const-manage.version>
+    </properties>
     <artifactId>fighter-open-parent</artifactId>
     <name>fighter-open-parent</name>
     <packaging>pom</packaging>
     <description>应用集市</description>
     <version>1.0.0-SNAPSHOT</version>
     <modules>
-        <module>fighter-open-api</module>
-        <module>fighter-open-portal</module>
         <module>fighter-open-server</module>
+        <module>fighter-open-admin</module>
+        <module>fighter-open-portal</module>
         <module>fighter-open-sdk/sdk-java</module>
+        <module>fighter-open-api</module>
     </modules>
 
     <dependencies>
@@ -35,11 +39,6 @@
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
             <optional>true</optional>
         </dependency>
 

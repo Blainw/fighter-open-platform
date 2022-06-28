@@ -9,11 +9,11 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableDubbo
-public class OpenApplication {
+public class OpenAdminApplication {
 
     public static void main(String[] args) {
 
-        SpringApplication application = new SpringApplication(OpenApplication.class);
+        SpringApplication application = new SpringApplication(OpenAdminApplication.class);
         application.addListeners(new LoggingPropertiesSetting());
         application.run(args);
     }

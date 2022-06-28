@@ -17,16 +17,3 @@ spring:
           - data-id: fighter-shared-config.yml
   application:
     name: fighter-open-admin
-  profiles:
-    active: dev
-server:
-  port: 8081
-fighter:
-  microservice:
-    core:
-      init-login-info-group: loginNamePassword
-  logging:
-    logstash:
-      host: 121.228.41.148
-      port: 4560
-    file-path: /logs

@@ -32,66 +32,66 @@ import org.hibernate.validator.constraints.Range;
 @SuperBuilder(toBuilder = true)
 public class TOpenAppExtend implements Serializable{
 
-private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
 
     @ApiModelProperty(value = "主键Id")
     @TableId(type = IdType.ASSIGN_UUID)
-                @Length(max = 32, message = "主键Id长度不能超过{max}")
+    @Length(max = 32, message = "主键Id长度不能超过{max}")
     private String  id;
 
 
     @ApiModelProperty(value = "应用Id")
-            @Length(max = 32, message = "应用Id长度不能超过{max}")
+    @Length(max = 32, message = "应用Id长度不能超过{max}")
     @NotBlank(message ="应用Id为空，或者类型错误")
     private String  appId;
 
 
     @ApiModelProperty(value = "浏览次数")
-            private Long  llcs;
+    private Long  llcs;
 
 
     @ApiModelProperty(value = "使用次数")
-            private Long  sycs;
+    private Long  sycs;
 
 
     @ApiModelProperty(value = "收藏次数")
-            private Long  sccs;
+    private Long  sccs;
 
 
     @ApiModelProperty(value = "平均评分")
-            private Double  pjfs;
+    private Double  pjfs;
 
 
     @ApiModelProperty(value = "扩展json")
-            private String  kzdx;
+    private String  kzdx;
 
 
     @ApiModelProperty(value = "租户ID")
-            @Length(max = 32, message = "租户ID长度不能超过{max}")
+    @Length(max = 32, message = "租户ID长度不能超过{max}")
     private String  tenantId;
 
 
     @ApiModelProperty(value = "创建人唯一健",hidden = true)
     @TableField(fill = FieldFill.INSERT)
-            @Length(max = 32, message = "创建人唯一健长度不能超过{max}")
+    @Length(max = 32, message = "创建人唯一健长度不能超过{max}")
     private String  createId;
 
 
     @ApiModelProperty(value = "创建时间",hidden = true)
     @TableField(fill = FieldFill.INSERT)
-            private  Date  createTime;
+    private  Date  createTime;
 
 
     @ApiModelProperty(value = "最后更新人唯一健",hidden = true)
     @TableField(fill = FieldFill.UPDATE)
-            @Length(max = 32, message = "最后更新人唯一健长度不能超过{max}")
+    @Length(max = 32, message = "最后更新人唯一健长度不能超过{max}")
     private String  updateId;
 
 
     @ApiModelProperty(value = "最后更新时间",hidden = true)
     @TableField(fill = FieldFill.UPDATE)
-            private  Date  updateTime;
+    private  Date  updateTime;
 
 
     public interface Save extends Default {

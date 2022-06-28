@@ -1,20 +1,20 @@
 package ai.wiseloong.open.service;
 
+import ai.wiseloong.fighter.core.pojo.ResultInfo;
+import ai.wiseloong.fighter.db.pojo.QueryCondition;
+import ai.wiseloong.open.pojo.TOpenApp;
+import ai.wiseloong.open.pojo.dto.TOpenAppDto;
+import ai.wiseloong.open.pojo.vo.TOpenAppVo;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.List;
-
-import ai.wiseloong.open.pojo.vo.TOpenAppVo;
-import ai.wiseloong.open.pojo.dto.TOpenAppDto;
-import ai.wiseloong.fighter.db.pojo.QueryCondition;
-import ai.wiseloong.fighter.core.pojo.ResultInfo;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.multipart.MultipartFile;
-import ai.wiseloong.open.pojo.TOpenApp;
 /**
  *
  * @ClassName: TOpenAppService

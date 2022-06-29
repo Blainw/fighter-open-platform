@@ -10,22 +10,12 @@
 
     <artifactId>fighter-open-portal</artifactId>
     <name>fighter-open-portal</name>
-
     <dependencies>
-
         <dependency>
             <groupId>ai.wiseloong</groupId>
-            <artifactId>fighter-framework-database-operation</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
+            <artifactId>fighter-open-server</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
-
-    <build>
-    </build>
 
 </project>

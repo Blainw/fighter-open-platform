@@ -10,6 +10,7 @@
 
     <properties>
         <const-manage.version>1.2.5.RELEASE</const-manage.version>
+        <fighter.version>1.10.1-SNAPSHOT</fighter.version>
     </properties>
     <artifactId>fighter-open-platform</artifactId>
     <name>fighter-open-platform</name>
@@ -22,6 +23,7 @@
         <module>fighter-open-portal</module>
         <module>fighter-open-sdk/sdk-java</module>
         <module>fighter-open-api</module>
+        <module>fighter-open-document</module>
     </modules>
 
     <dependencies>
@@ -29,13 +31,15 @@
         <dependency>
             <groupId>ai.wiseloong</groupId>
             <artifactId>fighter-framework-core</artifactId>
+            <version>${fighter.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo-registry-nacos</artifactId>
-            <optional>true</optional>
+            <groupId>ai.wiseloong</groupId>
+            <artifactId>fighter-framework-database-operation</artifactId>
+            <version>${fighter.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
@@ -43,32 +47,37 @@
         </dependency>
 
         <dependency>
+            <groupId>ai.wiseloong</groupId>
+            <artifactId>fighter-framework-core</artifactId>
+            <version>${fighter.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ai.wiseloong</groupId>
+            <artifactId>fighter-framework-microservice-core</artifactId>
+            <version>${fighter.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-registry-nacos</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-launcher</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
-    
 </project>

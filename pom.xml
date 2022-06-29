@@ -11,6 +11,7 @@
     <properties>
         <const-manage.version>1.2.5.RELEASE</const-manage.version>
         <fighter.version>1.10.1-SNAPSHOT</fighter.version>
+        <swagger.bootstrap.ui.version>1.9.6</swagger.bootstrap.ui.version>
     </properties>
     <artifactId>fighter-open-platform</artifactId>
     <name>fighter-open-platform</name>

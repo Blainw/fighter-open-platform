@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
-import java.time.Instant;
-import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 @Component
@@ -25,10 +23,11 @@ public class EmailUtils {
 
     public void sendEmail(String email) {
         int frequency = 1;
-        if (redisTemplate.hasKey(email)) {
+        if (redisTemplate.hasKey(email + "_frequency")) {
             frequency = Integer.valueOf(redisTemplate.opsForValue().get(email + "_frequency").toString());
             if (frequency > 10) {
-                throw new FighterRuntimeException("请求次数过多，请稍后再试！", RestResultCode.CODE_400.getCode(), false);
+                Long time = redisTemplate.opsForValue().getOperations().getExpire(email + "_frequency");
+                throw new FighterRuntimeException("请求次数过多，请" + (time > 0 ? time + "秒" : "稍后") + "后再试！", RestResultCode.CODE_400.getCode(), false);
             }
             frequency++;
         }
@@ -53,7 +52,7 @@ public class EmailUtils {
 
         if (frequency == 1) {
             redisTemplate.opsForValue().set(email + "_frequency", frequency);
-            redisTemplate.expireAt(email + "_frequency", new Date(Instant.now().toEpochMilli() + 3600 * 1000));
+            redisTemplate.expire(email + "_frequency", 1, TimeUnit.HOURS);
         } else {
             redisTemplate.opsForValue().set(email + "_frequency", frequency, 0);
         }

@@ -6,19 +6,19 @@ import ai.wiseloong.extend.utils.RestResultCode;
 import ai.wiseloong.fighter.core.exception.FighterRuntimeException;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
 @Component
 public class EmailUtils {
 
-    @Autowired
+    @Resource
     private RedisTemplate redisTemplate;
 
-    @Autowired
+    @Resource
     private OpenEmailProperties openEmailProperties;
 
     public void sendEmail(String email) {

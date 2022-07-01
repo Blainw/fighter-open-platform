@@ -1,6 +1,6 @@
 package ai.wiseloong.open.utils;
 
-import ai.wiseloong.email.pojo.OpenEmailProperties;
+import ai.wiseloong.open.email.pojo.OpenEmailProperties;
 import ai.wiseloong.extUtils.CommonUtils;
 import ai.wiseloong.extend.utils.RestResultCode;
 import ai.wiseloong.fighter.core.exception.FighterRuntimeException;

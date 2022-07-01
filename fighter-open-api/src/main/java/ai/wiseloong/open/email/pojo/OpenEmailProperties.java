@@ -1,4 +1,4 @@
-package ai.wiseloong.email.pojo;
+package ai.wiseloong.open.email.pojo;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

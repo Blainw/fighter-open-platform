@@ -31,7 +31,7 @@ public class EmailController {
     })
     @RequestMapping(method = RequestMethod.GET, value = "/send")
     public ResultInfo<TOpenApp> detail(HttpServletRequest request, HttpServletResponse response, String email) {
-        emailUtils.sendMsg(email);
+        emailUtils.sendEmail(email);
         return ResultInfoBuilder.success(RestResultCode.CODE_200.getMessage());
     }
 }

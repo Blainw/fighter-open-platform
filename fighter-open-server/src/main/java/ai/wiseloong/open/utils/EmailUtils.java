@@ -23,7 +23,7 @@ public class EmailUtils {
     @Autowired
     private OpenEmailProperties openEmailProperties;
 
-    public void sendMsg(String email) {
+    public void sendEmail(String email) {
         int frequency = 1;
         if (redisTemplate.hasKey(email)) {
             frequency = Integer.valueOf(redisTemplate.opsForValue().get(email + "_frequency").toString());

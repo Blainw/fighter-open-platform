@@ -41,6 +41,12 @@
             <artifactId>const-manage-api</artifactId>
             <version>${const-manage.version}</version>
         </dependency>
+        <!-- 发送邮件 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-email</artifactId>
+            <version>1.5</version>
+        </dependency>
     </dependencies>
     <build>
         <resources>

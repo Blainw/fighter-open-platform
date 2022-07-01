@@ -49,12 +49,6 @@
 
         <dependency>
             <groupId>ai.wiseloong</groupId>
-            <artifactId>fighter-framework-core</artifactId>
-            <version>${fighter.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>ai.wiseloong</groupId>
             <artifactId>fighter-framework-microservice-core</artifactId>
             <version>${fighter.version}</version>
         </dependency>

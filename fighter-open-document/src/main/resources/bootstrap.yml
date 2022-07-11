@@ -17,3 +17,6 @@ spring:
           - data-id: fighter-shared-config.yml
   application:
     name: fighter-open-document
+  web:
+    resources:
+      static-locations: classpath:/wdm
